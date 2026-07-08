@@ -1,0 +1,2356 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SBU2 - Kaopiz Summer Trip 2026 | Yamanashi • Kawaguchiko • Yamanakako | 2 Days 1 Night">
+  <title>SBU2 - Kaopiz Summer Trip 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       CSS Variables & Reset
+       ============================================ */
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-light: #3b82f6;
+      --green: #16a34a;
+      --green-light: #22c55e;
+      --green-dark: #15803d;
+      --white: #ffffff;
+      --orange: #f97316;
+      --orange-light: #fb923c;
+      --pink: #ec4899;
+      --purple: #8b5cf6;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-500: #64748b;
+      --gray-700: #334155;
+      --gray-900: #0f172a;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+      --shadow-md: 0 4px 20px rgba(37,99,235,.12);
+      --shadow-lg: 0 12px 40px rgba(37,99,235,.18);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --nav-height: 72px;
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      color: var(--gray-700);
+      background: var(--gray-50);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============================================
+       Utility Classes
+       ============================================ */
+    .container {
+      width: min(1140px, 92vw);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--gray-900);
+      margin-bottom: .75rem;
+    }
+
+    .section-desc {
+      color: var(--gray-500);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    /* Fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Glassmorphism card */
+    .glass-card {
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ============================================
+       Sticky Navigation
+       ============================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(37,99,235,.08);
+      transition: box-shadow var(--transition), background var(--transition);
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--shadow-md);
+      background: rgba(255,255,255,.95);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .nav-brand span { color: var(--orange); }
+
+    .nav-menu {
+      display: flex;
+      gap: .25rem;
+    }
+
+    .nav-link {
+      padding: .5rem .85rem;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      border-radius: var(--radius-sm);
+      transition: background var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(37,99,235,.1);
+      color: var(--blue);
+    }
+
+    /* Mobile menu toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .5rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gray-700);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ============================================
+       Hero Banner
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1920&q=80') center/cover no-repeat;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+
+    .hero:hover .hero-bg {
+      transform: scale(1.1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(29,78,216,.75) 0%,
+        rgba(22,163,74,.45) 50%,
+        rgba(15,23,42,.6) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: calc(var(--nav-height) + 2rem) 1.5rem 4rem;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem 1.25rem;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      animation: fadeDown 1s ease .2s both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,.3);
+      animation: fadeDown 1s ease .4s both;
+    }
+
+    .hero-location {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 500;
+      opacity: .95;
+      margin-bottom: .5rem;
+      animation: fadeDown 1s ease .6s both;
+    }
+
+    .hero-duration {
+      display: inline-block;
+      padding: .6rem 1.5rem;
+      background: var(--orange);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 1rem;
+      box-shadow: 0 4px 20px rgba(249,115,22,.4);
+      animation: fadeDown 1s ease .8s both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: rgba(255,255,255,.8);
+      font-size: .8rem;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll-icon {
+      width: 24px;
+      height: 40px;
+      border: 2px solid rgba(255,255,255,.5);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .hero-scroll-icon::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: var(--white);
+      border-radius: 2px;
+      animation: scrollDot 2s infinite;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes scrollDot {
+      0% { opacity: 1; top: 8px; }
+      100% { opacity: 0; top: 20px; }
+    }
+
+    /* ============================================
+       Timeline Section
+       ============================================ */
+    #schedule {
+      background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+    }
+
+    .timeline-wrapper {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Central vertical line */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--blue), var(--green), var(--orange));
+      border-radius: 4px;
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: top;
+      transition: transform 1.5s ease;
+    }
+
+    .timeline-line.animated {
+      transform: translateX(-50%) scaleY(1);
+    }
+
+    /* Day divider */
+    .day-divider {
+      position: relative;
+      text-align: center;
+      margin: 3rem 0 2.5rem;
+      z-index: 2;
+    }
+
+    .day-divider span {
+      display: inline-block;
+      padding: .75rem 2rem;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .1em;
+      border-radius: 50px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .day-divider.day-2 span {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+    }
+
+    /* Chặng divider trong ngày */
+    .segment-divider {
+      position: relative;
+      text-align: center;
+      margin: 2.5rem 0 1.5rem;
+      z-index: 2;
+      width: 100%;
+      clear: both;
+    }
+
+    .segment-divider span {
+      display: inline-block;
+      padding: .55rem 1.4rem;
+      background: linear-gradient(135deg, rgba(37,99,235,.1), rgba(22,163,74,.1));
+      color: var(--blue-dark);
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      border-radius: 50px;
+      border: 2px solid rgba(37,99,235,.18);
+      line-height: 1.4;
+      max-width: 92%;
+    }
+
+    .segment-divider.chang-4 span {
+      background: linear-gradient(135deg, rgba(249,115,22,.14), rgba(236,72,153,.1));
+      border-color: rgba(249,115,22,.28);
+      color: #c2410c;
+    }
+
+    /* Timeline item */
+    .timeline-item {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      width: 50%;
+      padding: 0 2.5rem;
+    }
+
+    .timeline-item.left {
+      margin-left: 0;
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .timeline-item.right {
+      margin-left: 50%;
+      text-align: left;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      position: absolute;
+      top: 1.25rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 4px solid var(--white);
+      box-shadow: 0 0 0 3px var(--blue);
+      z-index: 3;
+      transition: transform .3s ease;
+    }
+
+    .timeline-item.left .timeline-dot { right: -10px; }
+    .timeline-item.right .timeline-dot { left: -10px; }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.3);
+    }
+
+    /* Activity type colors for dots */
+    .type-transport .timeline-dot { box-shadow: 0 0 0 3px var(--blue); background: var(--blue); }
+    .type-food .timeline-dot { box-shadow: 0 0 0 3px var(--orange); background: var(--orange); }
+    .type-photo .timeline-dot { box-shadow: 0 0 0 3px var(--purple); background: var(--purple); }
+    .type-shopping .timeline-dot { box-shadow: 0 0 0 3px #06b6d4; background: #06b6d4; }
+    .type-villa .timeline-dot { box-shadow: 0 0 0 3px var(--green); background: var(--green); }
+    .type-outlet .timeline-dot { box-shadow: 0 0 0 3px #a855f7; background: #a855f7; }
+    .type-peach .timeline-dot { box-shadow: 0 0 0 3px var(--pink); background: var(--pink); }
+    .type-fireworks .timeline-dot { box-shadow: 0 0 0 3px #ef4444; background: #ef4444; }
+    .type-rest .timeline-dot { box-shadow: 0 0 0 3px #14b8a6; background: #14b8a6; }
+
+    /* Timeline card */
+    .timeline-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      width: 100%;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .type-transport .timeline-card::before { background: var(--blue); }
+    .type-food .timeline-card::before { background: var(--orange); }
+    .type-photo .timeline-card::before { background: var(--purple); }
+    .type-shopping .timeline-card::before { background: #06b6d4; }
+    .type-villa .timeline-card::before { background: var(--green); }
+    .type-outlet .timeline-card::before { background: #a855f7; }
+    .type-peach .timeline-card::before { background: var(--pink); }
+    .type-fireworks .timeline-card::before { background: #ef4444; }
+    .type-rest .timeline-card::before { background: #14b8a6; }
+
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .timeline-time {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+    }
+
+    .timeline-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .timeline-type-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: .2rem .6rem;
+      border-radius: 4px;
+      margin-bottom: .75rem;
+    }
+
+    .type-transport .timeline-type-badge { background: rgba(37,99,235,.12); color: var(--blue); }
+    .type-food .timeline-type-badge { background: rgba(249,115,22,.12); color: var(--orange); }
+    .type-photo .timeline-type-badge { background: rgba(139,92,246,.12); color: var(--purple); }
+    .type-shopping .timeline-type-badge { background: rgba(6,182,212,.12); color: #0891b2; }
+    .type-villa .timeline-type-badge { background: rgba(22,163,74,.12); color: var(--green); }
+    .type-outlet .timeline-type-badge { background: rgba(168,85,247,.12); color: #9333ea; }
+    .type-peach .timeline-type-badge { background: rgba(236,72,153,.12); color: var(--pink); }
+    .type-fireworks .timeline-type-badge { background: rgba(239,68,68,.12); color: #dc2626; }
+    .type-rest .timeline-type-badge { background: rgba(20,184,166,.12); color: #0d9488; }
+
+    .timeline-title {
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+      font-size: 1.05rem;
+    }
+
+    .timeline-desc {
+      font-size: .92rem;
+      color: var(--gray-500);
+    }
+
+    .timeline-activities {
+      margin-top: .75rem;
+      padding-top: .75rem;
+      border-top: 1px dashed var(--gray-200);
+    }
+
+    .timeline-activities li {
+      font-size: .88rem;
+      color: var(--gray-700);
+      padding: .2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .timeline-item.left .timeline-activities li {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    .timeline-activities li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .timeline-item.left .timeline-activities li::before {
+      left: auto;
+      right: 0;
+    }
+
+    /* ============================================
+       Hotel Section
+       ============================================ */
+    #hotel {
+      background: var(--white);
+    }
+
+    .hotel-block {
+      margin-bottom: 1rem;
+    }
+
+    .cottage-badge {
+      display: inline-block;
+      padding: .35rem 1rem;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: var(--white);
+      font-size: .78rem;
+      font-weight: 600;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+      letter-spacing: .04em;
+    }
+
+    .cottage-badge.badge-b {
+      background: linear-gradient(135deg, var(--blue-dark), #1e40af);
+    }
+
+    .hotel-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gray-300), transparent);
+      margin: 4rem auto;
+      max-width: 600px;
+    }
+
+    .hotel-showcase {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .hotel-main-image {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+    }
+
+    .hotel-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .hotel-main-image:hover img {
+      transform: scale(1.06);
+    }
+
+    .hotel-main-image .image-label {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      padding: .4rem 1rem;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-size: .8rem;
+      border-radius: 50px;
+    }
+
+    .hotel-info {
+      padding: 1rem 0;
+    }
+
+    .hotel-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gray-900);
+      margin-bottom: .25rem;
+    }
+
+    .hotel-name-jp {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+    }
+
+    .hotel-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .spec-item {
+      text-align: center;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .spec-item:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .spec-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .spec-label {
+      font-size: .8rem;
+      color: var(--gray-500);
+      margin-top: .25rem;
+    }
+
+    .hotel-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .highlight-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1rem;
+      background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(22,163,74,.08));
+      border: 1px solid rgba(37,99,235,.15);
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .highlight-tag:hover {
+      background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(22,163,74,.15));
+      transform: scale(1.03);
+    }
+
+    /* Gallery */
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gray-900);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease, filter .5s ease;
+    }
+
+    .gallery-item::after {
+      content: '🔍';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: rgba(37,99,235,.0);
+      transition: background var(--transition);
+      opacity: 0;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+      filter: brightness(.85);
+    }
+
+    .gallery-item:hover::after {
+      background: rgba(37,99,235,.35);
+      opacity: 1;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: .5rem .75rem;
+      background: linear-gradient(transparent, rgba(0,0,0,.7));
+      color: var(--white);
+      font-size: .75rem;
+      transform: translateY(100%);
+      transition: transform var(--transition);
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       Room Assignment Section
+       ============================================ */
+    #rooms {
+      background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .room-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .room-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .room-card-header {
+      padding: 1.5rem 2rem;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .room-card-a .room-card-header {
+      background: linear-gradient(135deg, var(--pink), #be185d);
+    }
+
+    .room-card-b .room-card-header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    }
+
+    .room-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .room-card-count {
+      font-size: .9rem;
+      opacity: .9;
+      background: rgba(255,255,255,.2);
+      padding: .3rem .8rem;
+      border-radius: 50px;
+    }
+
+    .room-card-body {
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .room-gender-label {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+
+    .room-gender-label.male { color: var(--blue); }
+    .room-gender-label.female { color: var(--pink); }
+
+    .member-list {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .member-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: .65rem .85rem;
+      border-radius: var(--radius-sm);
+      background: var(--gray-50);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .member-item:hover {
+      background: var(--gray-100);
+      transform: translateX(4px);
+    }
+
+    .member-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .avatar-male { background: linear-gradient(135deg, var(--blue-light), var(--blue-dark)); }
+    .avatar-female { background: linear-gradient(135deg, var(--pink), #be185d); }
+    .avatar-special { background: linear-gradient(135deg, var(--orange), #ea580c); }
+
+    .member-name {
+      font-weight: 500;
+      color: var(--gray-700);
+      font-size: .95rem;
+    }
+
+    .member-role {
+      font-size: .75rem;
+      color: var(--gray-500);
+      margin-left: auto;
+      background: rgba(249,115,22,.12);
+      color: var(--orange);
+      padding: .15rem .5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* ============================================
+       Notes Section
+       ============================================ */
+    #notes {
+      background: var(--white);
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .note-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .note-item:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .note-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .note-text {
+      font-size: .92rem;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    /* ============================================
+       Footer
+       ============================================ */
+    .footer {
+      background: linear-gradient(135deg, var(--gray-900) 0%, #1e3a5f 50%, var(--blue-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37,99,235,.15) 0%, transparent 60%);
+      animation: footerGlow 8s ease infinite;
+    }
+
+    @keyframes footerGlow {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(10%, 10%); }
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: .75rem;
+    }
+
+    .footer-subtitle {
+      font-size: 1.2rem;
+      opacity: .9;
+      margin-bottom: .5rem;
+    }
+
+    .footer-trip {
+      font-size: .95rem;
+      opacity: .7;
+      margin-top: 1rem;
+    }
+
+    .footer-heart {
+      color: var(--orange);
+      animation: heartbeat 1.5s ease infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ============================================
+       Lightbox
+       ============================================ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(15,23,42,.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      transform: scale(.9);
+      transition: transform .3s ease;
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,.15);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .lightbox-close:hover { background: rgba(255,255,255,.3); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,.15);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .lightbox-nav:hover { background: rgba(255,255,255,.3); }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--white);
+      font-size: .95rem;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    /* ============================================
+       Back To Top Button
+       ============================================ */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: linear-gradient(135deg, var(--orange), #ea580c);
+      transform: translateY(-4px);
+    }
+
+    /* ============================================
+       Responsive — Tablet
+       ============================================ */
+    @media (max-width: 1024px) {
+      .hotel-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ============================================
+       Responsive — Mobile
+       ============================================ */
+    @media (max-width: 768px) {
+      :root { --nav-height: 64px; }
+
+      .nav-toggle { display: flex; }
+
+      .nav-menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1rem;
+        gap: .25rem;
+        border-bottom: 1px solid var(--gray-200);
+        transform: translateY(-120%);
+        opacity: 0;
+        transition: transform var(--transition), opacity var(--transition);
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .nav-link {
+        padding: .75rem 1rem;
+        font-size: .95rem;
+      }
+
+      .section { padding: 3.5rem 0; }
+
+      /* Timeline mobile — single column */
+      .timeline-line { left: 20px; }
+
+      .timeline-item,
+      .timeline-item.left,
+      .timeline-item.right {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 0 0 3rem;
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .timeline-item.left { flex-direction: row; }
+
+      .timeline-dot,
+      .timeline-item.left .timeline-dot,
+      .timeline-item.right .timeline-dot {
+        left: 11px;
+        right: auto;
+      }
+
+      .timeline-item.left .timeline-activities li {
+        padding-left: 1rem;
+        padding-right: 0;
+      }
+
+      .timeline-item.left .timeline-activities li::before {
+        left: 0;
+        right: auto;
+      }
+
+      .hotel-specs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: .5rem;
+      }
+
+      .spec-value { font-size: 1.1rem; }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+      }
+
+      .rooms-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .notes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .back-to-top {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.8rem; }
+      .hotel-specs { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+    }
+
+    /* ============================================
+       Print Styles
+       ============================================ */
+    @media print {
+      .navbar,
+      .back-to-top,
+      .lightbox,
+      .hero-scroll,
+      .nav-toggle { display: none !important; }
+
+      body { background: white; color: black; font-size: 11pt; }
+
+      .hero {
+        min-height: auto;
+        padding: 2rem 0;
+        page-break-after: always;
+      }
+
+      .hero-bg { transform: none !important; }
+      .hero-overlay { background: rgba(29,78,216,.6); }
+
+      .section { padding: 1.5rem 0; page-break-inside: avoid; }
+
+      .fade-in { opacity: 1 !important; transform: none !important; }
+
+      .timeline-card,
+      .room-card,
+      .note-item {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+      }
+
+      .timeline-line { transform: translateX(-50%) scaleY(1) !important; }
+
+      .gallery-item::after { display: none; }
+
+      a[href]::after { content: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       Sticky Navigation
+       ============================================ -->
+  <nav class="navbar" id="navbar" aria-label="Điều hướng chính">
+    <div class="container">
+      <a href="#home" class="nav-brand">🏕️ SBU2 <span>Summer Trip</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link">🏠 Trang chủ</a></li>
+        <li><a href="#schedule" class="nav-link">📅 Lịch trình</a></li>
+        <li><a href="#hotel" class="nav-link">🏡 Khách sạn</a></li>
+        <li><a href="#rooms" class="nav-link">🛏️ Chia phòng</a></li>
+        <li><a href="#notes" class="nav-link">⚠️ Lưu ý</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       Hero Banner
+       ============================================ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" role="img" aria-label="Núi Phú Sĩ và hồ Kawaguchiko"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">🏕️ Kaopiz Company Trip</div>
+      <h1 class="hero-title">SBU2 - Kaopiz Summer Trip 2026</h1>
+      <p class="hero-location">Yamanashi • Kawaguchiko • Yamanakako</p>
+      <span class="hero-duration">2 Days 1 Night</span>
+    </div>
+
+    <a href="#schedule" class="hero-scroll" aria-label="Cuộn xuống lịch trình">
+      <span>Khám phá</span>
+      <div class="hero-scroll-icon"></div>
+    </a>
+  </section>
+
+  <!-- ============================================
+       Section 1: Lịch trình (Timeline)
+       ============================================ -->
+  <section class="section" id="schedule">
+    <div class="container">
+      <header class="section-header fade-in">
+        <span class="section-label">Hành trình</span>
+        <h2 class="section-title">📅 Lịch Trình Chi Tiết</h2>
+        <p class="section-desc">2 ngày 1 đêm khám phá vùng đất Yamanashi — từ hồ Kawaguchiko đến vườn đào và Gotemba Outlets</p>
+      </header>
+
+      <div class="timeline-wrapper">
+        <div class="timeline-line" id="timelineLine"></div>
+
+        <!-- ===== DAY 1 ===== -->
+        <div class="day-divider fade-in">
+          <span>DAY 1</span>
+        </div>
+
+        <!-- CHẶNG 1: ĐÓN ĐOÀN & HỘI QUÂN -->
+        <div class="segment-divider fade-in">
+          <span>CHẶNG 1: ĐÓN ĐOÀN &amp; HỘI QUÂN</span>
+        </div>
+
+        <div class="timeline-item left type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 08:30</div>
+            <span class="timeline-type-badge">Di chuyển</span>
+            <h3 class="timeline-title">Đón đoàn tại Sân bay Narita</h3>
+            <p class="timeline-desc">Xe bus 28 chỗ có mặt tại bãi đỗ xe đoàn. Hướng dẫn viên và tài xế đón đoàn Việt Nam vừa hoàn tất thủ tục nhập cảnh. Mọi người sắp xếp hành lý ký gửi vào cốp xe.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 09:00</div>
+            <span class="timeline-type-badge">Di chuyển</span>
+            <h3 class="timeline-title">Xuất phát từ Sân bay Narita</h3>
+            <p class="timeline-desc">Xe bus chạy dọc theo đường cao tốc hướng về tỉnh Chiba.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 09:45</div>
+            <span class="timeline-type-badge">Hội quân</span>
+            <h3 class="timeline-title">Ga Nishi-Funabashi (Cửa Nam)</h3>
+            <ul class="timeline-activities">
+              <li>Thành viên Tokyo &amp; Chiba (tập trung từ 9:30) lên xe</li>
+              <li>Xếp thùng xốp giữ nhiệt &amp; hành lý nhóm Nhật lên xe</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 10:00</div>
+            <span class="timeline-type-badge">Khởi hành</span>
+            <h3 class="timeline-title">Toàn đoàn 22 người — Lên đường Phú Sĩ</h3>
+            <p class="timeline-desc">Xe bus chính thức chuyển bánh, tiến thẳng lên Cao tốc Chuo hướng núi Phú Sĩ.</p>
+          </div>
+        </div>
+
+        <!-- CHẶNG 2: DI CHUYỂN & ĂN TRƯA -->
+        <div class="segment-divider fade-in">
+          <span>CHẶNG 2: DI CHUYỂN &amp; ĂN TRƯA</span>
+        </div>
+
+        <div class="timeline-item left type-rest fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🍜</span> 11:30</div>
+            <span class="timeline-type-badge">Nghỉ chân</span>
+            <h3 class="timeline-title">Trạm Dangozaka Service Area</h3>
+            <ul class="timeline-activities">
+              <li>Nghỉ ngơi, đi vệ sinh sau hơn 1 tiếng rưỡi di chuyển</li>
+              <li>Tự do mua đồ ăn trưa: cơm nắm, bánh mì, Ramen tại Food court</li>
+              <li>Ăn tại chỗ hoặc mang lên xe — tiết kiệm thời gian</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 12:15</div>
+            <span class="timeline-type-badge">Di chuyển</span>
+            <h3 class="timeline-title">Tiếp tục hành trình</h3>
+            <p class="timeline-desc">Đoàn lên xe, xuôi về vùng hồ.</p>
+          </div>
+        </div>
+
+        <!-- CHẶNG 3: VUI CHƠI & CHUẨN BỊ BBQ -->
+        <div class="segment-divider fade-in">
+          <span>CHẶNG 3: VUI CHƠI &amp; CHUẨN BỊ BBQ</span>
+        </div>
+
+        <div class="timeline-item left type-photo fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">📸</span> 13:00</div>
+            <span class="timeline-type-badge">Tham quan</span>
+            <h3 class="timeline-title">Công viên Oishi (大石公園)</h3>
+            <ul class="timeline-activities">
+              <li>Dạo chơi, chụp ảnh tập thể với view hồ Kawaguchiko &amp; núi Phú Sĩ</li>
+              <li>Thưởng thức kem tươi vị hoa oải hương hoặc dâu tây</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 14:00</div>
+            <span class="timeline-type-badge">Di chuyển</span>
+            <h3 class="timeline-title">Đến Siêu thị MEGA Ogino</h3>
+            <p class="timeline-desc">オギノ河口湖店 — siêu thị lớn nhất khu vực.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left type-shopping fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🛒</span> 14:15 – 15:15</div>
+            <span class="timeline-type-badge">Mua sắm</span>
+            <h3 class="timeline-title">Đại bần chiến dịch siêu thị BBQ</h3>
+            <ul class="timeline-activities">
+              <li>Thịt bò Nhật, hải sản, cánh gà, rau củ, nước sốt</li>
+              <li>Bia, nước ngọt, đá lạnh &amp; đồ ăn sáng ngày mai</li>
+              <li>Xếp vào thùng xốp giữ nhiệt &amp; cho lên xe bus</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 15:15</div>
+            <span class="timeline-type-badge">Di chuyển</span>
+            <h3 class="timeline-title">Về hướng hồ Yamanakako</h3>
+            <p class="timeline-desc">Xe bus xuất phát từ siêu thị để check-in villa.</p>
+          </div>
+        </div>
+
+        <!-- CHẶNG 4: CHECK-IN VILLA & TIỆC TỐI -->
+        <div class="segment-divider chang-4 fade-in">
+          <span>CHẶNG 4: CHECK-IN VILLA &amp; TIỆC TỐI</span>
+        </div>
+
+        <div class="timeline-item left type-villa fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🏕️</span> 15:30</div>
+            <span class="timeline-type-badge">Check-in</span>
+            <h3 class="timeline-title">Văn phòng りす村別荘</h3>
+            <p class="timeline-desc">Địa chỉ: 山中湖村山中225-1. Trưởng đoàn làm thủ tục, nhận chìa khóa 2 căn hộ. Nhân viên hướng dẫn đỗ xe bus &amp; dẫn đường vào khu biệt thự.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-villa fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🏡</span> 16:00</div>
+            <span class="timeline-type-badge">Nhận phòng</span>
+            <h3 class="timeline-title">Vào 2 căn biệt thự</h3>
+            <ul class="timeline-activities">
+              <li>Căn 14 người (りす2号) &amp; căn 9 người (Fika)</li>
+              <li>Phân chia giường, cất đồ ăn vào tủ lạnh</li>
+              <li>Tắm rửa &amp; nghỉ ngơi sau ngày di chuyển dài</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item left type-villa fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🔥</span> 17:00</div>
+            <span class="timeline-type-badge">Chuẩn bị BBQ</span>
+            <h3 class="timeline-title">Setup tiệc nướng ngoài trời</h3>
+            <p class="timeline-desc">Chủ nhà hỗ trợ bàn ghế &amp; 2 bếp nướng tại bãi đất sát 2 căn hộ. Anh em nam giới hỗ trợ bày biện đồ ăn.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-food fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🍖</span> 18:00 – 21:00</div>
+            <span class="timeline-type-badge">Ăn uống</span>
+            <h3 class="timeline-title">Đại tiệc BBQ — 22 người</h3>
+            <p class="timeline-desc">Toàn đoàn quây quần ăn uống, nâng ly chúc mừng hội ngộ đầy đủ giữa không khí mát mẻ vùng núi Phú Sĩ.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left type-fireworks fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🎆</span> 20:00 – 21:00</div>
+            <span class="timeline-type-badge">Pháo hoa</span>
+            <h3 class="timeline-title">Lễ hội Koushasai — Ngắm pháo hoa</h3>
+            <ul class="timeline-activities">
+              <li>Pháo hoa khai mạc chính thức trên hồ Yamanakako</li>
+              <li>Vừa ăn BBQ vừa ngắm từ sân villa</li>
+              <li>Hoặc đi bộ vài phút ra ven hồ — góc nhìn hoành tráng nhất</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item right type-villa fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🧹</span> 21:00</div>
+            <span class="timeline-type-badge">Dọn dẹp</span>
+            <h3 class="timeline-title">Kết thúc tiệc nướng ngoài trời</h3>
+            <p class="timeline-desc">Theo quy định villa, đoàn dọn dẹp &amp; phân loại rác bốc vào túi để tránh ảnh hưởng hàng xóm.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left type-villa fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🎉</span> 21:15 →</div>
+            <span class="timeline-type-badge">Giao lưu</span>
+            <h3 class="timeline-title">Tiệc trong nhà — りす2号</h3>
+            <ul class="timeline-activities">
+              <li>Toàn đoàn vào Phòng khách căn lớn (Risu số 2), đóng kín cửa kính</li>
+              <li>Giao lưu, trò chuyện, chơi trò chơi tăng 2 bên trong nhà</li>
+              <li>Đến giờ ngủ: nhóm căn 9 người đi bộ 2 phút về căn Fika</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ===== DAY 2 ===== -->
+        <div class="day-divider day-2 fade-in">
+          <span>DAY 2</span>
+        </div>
+
+        <!-- 07:30 — Ăn sáng -->
+        <div class="timeline-item left type-food fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🍜</span> 07:30</div>
+            <span class="timeline-type-badge">Ăn uống</span>
+            <h3 class="timeline-title">Ăn sáng tại Villa</h3>
+            <p class="timeline-desc">Tự túc tại Villa.</p>
+          </div>
+        </div>
+
+        <!-- 08:45 — Check-out -->
+        <div class="timeline-item right type-villa fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🏕️</span> 08:45</div>
+            <span class="timeline-type-badge">Check-out</span>
+            <h3 class="timeline-title">Check-out Villa</h3>
+            <p class="timeline-desc">Trả phòng và chuẩn bị hành trình ngày mới.</p>
+          </div>
+        </div>
+
+        <!-- 09:30 — Hái đào -->
+        <div class="timeline-item left type-peach fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🍑</span> 09:30</div>
+            <span class="timeline-type-badge">Hái đào</span>
+            <h3 class="timeline-title">Vườn đào Fuefuki / Misaka</h3>
+            <ul class="timeline-activities">
+              <li>Hái đào</li>
+              <li>Ăn đào tại vườn</li>
+              <li>Check-in</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 11:15 — Ăn trưa -->
+        <div class="timeline-item right type-food fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🍜</span> 11:15</div>
+            <span class="timeline-type-badge">Ăn uống</span>
+            <h3 class="timeline-title">Ăn trưa — Houtou Yamanashi</h3>
+            <p class="timeline-desc">Thưởng thức món ăn đặc sản vùng núi.</p>
+          </div>
+        </div>
+
+        <!-- 13:15 — Outlet -->
+        <div class="timeline-item left type-outlet fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🛍️</span> 13:15</div>
+            <span class="timeline-type-badge">Outlet</span>
+            <h3 class="timeline-title">Gotemba Premium Outlets</h3>
+            <ul class="timeline-activities">
+              <li>Shopping</li>
+              <li>Cafe</li>
+              <li>Chụp hình</li>
+            </ul>
+            <p class="timeline-desc" style="margin-top:.5rem;">⏱️ Thời gian: 3 tiếng</p>
+          </div>
+        </div>
+
+        <!-- 16:30 — Về Tokyo -->
+        <div class="timeline-item right type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 16:30</div>
+            <span class="timeline-type-badge">Di chuyển</span>
+            <h3 class="timeline-title">Khởi hành về Tokyo</h3>
+            <p class="timeline-desc">Xe bus đưa đoàn trở về.</p>
+          </div>
+        </div>
+
+        <!-- 18:30 — Kết thúc -->
+        <div class="timeline-item left type-transport fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time"><span class="timeline-icon">🚌</span> 18:30</div>
+            <span class="timeline-type-badge">Kết thúc</span>
+            <h3 class="timeline-title">Về đến Ga Nishi-Funabashi</h3>
+            <p class="timeline-desc">Kết thúc chuyến đi. Have a nice trip! 🎉</p>
+          </div>
+        </div>
+
+      </div><!-- /.timeline-wrapper -->
+    </div>
+  </section>
+
+  <!-- ============================================
+       Section 2: Khách sạn
+       Fika (7名) — https://risu-mura.com/page2
+       りす2号 (14名) — https://risu-mura.com/page3
+       ============================================ -->
+  <section class="section" id="hotel">
+    <div class="container">
+      <header class="section-header fade-in">
+        <span class="section-label">Nơi nghỉ ngơi</span>
+        <h2 class="section-title">🏡 Khách Sạn — りす村別荘</h2>
+        <p class="section-desc">2 căn cottage: Fika (9 người) &amp; りす2号 (14 người) — view hồ Yamanakako &amp; núi Phú Sĩ</p>
+      </header>
+
+      <!-- Cottage B — りす2号 (14 người) -->
+      <div class="hotel-block fade-in">
+        <span class="cottage-badge badge-b">🏡 Cottage B — 14 người</span>
+
+        <div class="hotel-showcase">
+          <div class="hotel-main-image">
+            <img
+              src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168181/13t5_bw1200h900.jpg"
+              alt="りす2号 — Ngoại cảnh cottage 14 người"
+              loading="lazy"
+            >
+            <span class="image-label">りす2号 — 外観</span>
+          </div>
+
+          <div class="hotel-info">
+            <h3 class="hotel-name">りす2号</h3>
+            <p class="hotel-name-jp">りす村別荘 大型コテージ — 4LDK rộng rãi cho đoàn lớn</p>
+
+            <div class="hotel-specs">
+              <div class="spec-item">
+                <div class="spec-value">14</div>
+                <div class="spec-label">Sức chứa (người)</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-value">160</div>
+                <div class="spec-label">Diện tích (㎡)</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-value">4LDK</div>
+                <div class="spec-label">Loại phòng</div>
+              </div>
+            </div>
+
+            <div class="hotel-highlights">
+              <span class="highlight-tag">🏡 Cottage lớn 4LDK</span>
+              <span class="highlight-tag">🔥 BBQ sân vườn (than)</span>
+              <span class="highlight-tag">🛏️ Futon &amp; Phòng ngủ riêng</span>
+              <span class="highlight-tag">🎉 Phòng khách giao lưu</span>
+              <span class="highlight-tag">🎆 View ngắm pháo hoa hồ</span>
+              <span class="highlight-tag">👥 Lý tưởng cho đoàn 14 người</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="gallery-title">📷 Thư viện ảnh りす2号</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-caption="りす2号 — Ngoại cảnh cottage">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168181/13t5_bw600h450.jpg" alt="Risu 2 ngoại cảnh" loading="lazy">
+            <span class="gallery-caption">Ngoại cảnh</span>
+          </div>
+          <div class="gallery-item" data-caption="りす2号 — Phòng khách rộng">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168198/gqlx_bw600h450.jpg" alt="Risu 2 living room" loading="lazy">
+            <span class="gallery-caption">Phòng khách</span>
+          </div>
+          <div class="gallery-item" data-caption="りす2号 — Không gian nội thất">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168201/j1lv_bw600h450.jpg" alt="Risu 2 interior" loading="lazy">
+            <span class="gallery-caption">Nội thất</span>
+          </div>
+          <div class="gallery-item" data-caption="りす2号 — Phòng ngủ">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168200/g7zw_bw600h450.jpg" alt="Risu 2 bedroom" loading="lazy">
+            <span class="gallery-caption">Phòng ngủ</span>
+          </div>
+          <div class="gallery-item" data-caption="りす2号 — Bếp &amp; khu ăn">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168196/aq81_bw600h450.jpg" alt="Risu 2 kitchen" loading="lazy">
+            <span class="gallery-caption">Bếp &amp; khu ăn</span>
+          </div>
+          <div class="gallery-item" data-caption="りす2号 — Sân BBQ">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168194/l5kk_bw600h450.jpg" alt="Risu 2 BBQ yard" loading="lazy">
+            <span class="gallery-caption">Sân BBQ</span>
+          </div>
+          <div class="gallery-item" data-caption="りす2号 — Khu vực nghỉ ngơi">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168204/1hdg_bw600h450.jpg" alt="Risu 2 lounge" loading="lazy">
+            <span class="gallery-caption">Khu nghỉ ngơi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-divider fade-in"></div>
+
+      <!-- Cottage A — Fika (9 người) -->
+      <div class="hotel-block fade-in">
+        <span class="cottage-badge">🏡 Cottage A — 9 người</span>
+
+        <div class="hotel-showcase">
+          <div class="hotel-main-image">
+            <img
+              src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168374/rb86_bw1200h900.jpg"
+              alt="Fika Cottage — Ngoại cảnh りす村別荘"
+              loading="lazy"
+            >
+            <span class="image-label">Fika（フィーカ）— 外観</span>
+          </div>
+
+          <div class="hotel-info">
+            <h3 class="hotel-name">Fika</h3>
+            <p class="hotel-name-jp">フィーカ — 湖と富士山を一望できるコテージ</p>
+
+            <div class="hotel-specs">
+              <div class="spec-item">
+                <div class="spec-value">7</div>
+                <div class="spec-label">Sức chứa (người)</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-value">77.4</div>
+                <div class="spec-label">Diện tích (㎡)</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-value">Futon</div>
+                <div class="spec-label">Loại giường</div>
+              </div>
+            </div>
+
+            <div class="hotel-highlights">
+              <span class="highlight-tag">🏔️ View núi Phú Sĩ</span>
+              <span class="highlight-tag">🌊 View hồ Yamanakako</span>
+              <span class="highlight-tag">🔥 BBQ Terrace</span>
+              <span class="highlight-tag">🏡 Cottage riêng</span>
+              <span class="highlight-tag">📸 Góc check-in đẹp</span>
+              <span class="highlight-tag">🪵 Phong cách Scandinavian</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="gallery-title">📷 Thư viện ảnh Fika</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-caption="Fika — Ngoại cảnh cottage">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168374/rb86_bw600h450.jpg" alt="Fika ngoại cảnh" loading="lazy">
+            <span class="gallery-caption">Ngoại cảnh</span>
+          </div>
+          <div class="gallery-item" data-caption="Fika — Veranda nhìn ra hồ">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1265439/57wl_bw600h450.jpg" alt="Fika veranda" loading="lazy">
+            <span class="gallery-caption">Veranda</span>
+          </div>
+          <div class="gallery-item" data-caption="Fika — Hoàng hôn từ terrace">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1233266/myi7_bw600h450.jpg" alt="Fika terrace sunset" loading="lazy">
+            <span class="gallery-caption">Terrace hoàng hôn</span>
+          </div>
+          <div class="gallery-item" data-caption="Fika — Phòng khách Scandinavian">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1265496/u7c8_bw600h450.jpg" alt="Fika living room" loading="lazy">
+            <span class="gallery-caption">Phòng khách</span>
+          </div>
+          <div class="gallery-item" data-caption="Fika — Không gian nội thất">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168380/2sxk_bw600h450.jpg" alt="Fika interior" loading="lazy">
+            <span class="gallery-caption">Nội thất</span>
+          </div>
+          <div class="gallery-item" data-caption="Fika — BBQ Terrace">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168382/zbzk_bw600h450.jpg" alt="Fika BBQ terrace" loading="lazy">
+            <span class="gallery-caption">BBQ Terrace</span>
+          </div>
+          <div class="gallery-item" data-caption="Fika — View núi Phú Sĩ">
+            <img src="https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/3vwogotv/1168379/an0c_bw600h450.jpg" alt="Fika Mt Fuji view" loading="lazy">
+            <span class="gallery-caption">View Phú Sĩ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Section 3: Chia phòng
+       ============================================ -->
+  <section class="section" id="rooms">
+    <div class="container">
+      <header class="section-header fade-in">
+        <span class="section-label">Phân bổ</span>
+        <h2 class="section-title">🛏️ Chia Phòng</h2>
+        <p class="section-desc">2 cottage tại りす村別荘 — Cottage A (9 người) &amp; Cottage B (14 người)</p>
+      </header>
+
+      <div class="rooms-grid">
+        <!-- Cottage B — Nam -->
+        <div class="room-card room-card-b fade-in">
+          <div class="room-card-header">
+            <span class="room-card-title">🏡 Cottage B — りす2号</span>
+            <span class="room-card-count">14 người</span>
+          </div>
+          <div class="room-card-body">
+            <div class="room-gender-label male">👨 Nam</div>
+            <ul class="member-list">
+              <li class="member-item">
+                <div class="member-avatar avatar-male">L</div>
+                <span class="member-name">Vũ Xuân Lâm</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">T</div>
+                <span class="member-name">Nguyễn Bá Tú</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">T</div>
+                <span class="member-name">Trần Văn Tú</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">Đ</div>
+                <span class="member-name">Nguyễn Đình Đẳng</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">D</div>
+                <span class="member-name">Trần Phương Duy</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">K</div>
+                <span class="member-name">Dương Xuân Khải</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">H</div>
+                <span class="member-name">Nguyễn Trọng Hoàn</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">K</div>
+                <span class="member-name">Nguyễn Trung Kiên</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">T</div>
+                <span class="member-name">Vũ Lê Trung</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">D</div>
+                <span class="member-name">Mưu Văn Duy</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-male">T</div>
+                <span class="member-name">Nguyễn Anh Tú</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-special">🚗</div>
+                <span class="member-name">Lái xe</span>
+                <span class="member-role">Hỗ trợ</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-special">🎯</div>
+                <span class="member-name">Hướng dẫn viên</span>
+                <span class="member-role">Hỗ trợ</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cottage A — Nữ -->
+        <div class="room-card room-card-a fade-in">
+          <div class="room-card-header">
+            <span class="room-card-title">🏡 Cottage A — Fika</span>
+            <span class="room-card-count">9 người</span>
+          </div>
+          <div class="room-card-body">
+            <div class="room-gender-label female">👩 Nữ</div>
+            <ul class="member-list">
+              <li class="member-item">
+                <div class="member-avatar avatar-female">D</div>
+                <span class="member-name">Đặng Ngọc Diệp</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">T</div>
+                <span class="member-name">Hồ Lê Minh Thư</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">K</div>
+                <span class="member-name">Vợ Khải</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">C</div>
+                <span class="member-name">Nguyễn Thị Bích Cảnh</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">L</div>
+                <span class="member-name">Trần Thị Khánh Linh</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">1</div>
+                <span class="member-name">Chị 1 BU khác</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">2</div>
+                <span class="member-name">Chị 2 BU khác</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">3</div>
+                <span class="member-name">Chị 3 BU khác</span>
+              </li>
+              <li class="member-item">
+                <div class="member-avatar avatar-female">4</div>
+                <span class="member-name">Chị 4 BU khác</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Section 4: Lưu ý
+       ============================================ -->
+  <section class="section" id="notes">
+    <div class="container">
+      <header class="section-header fade-in">
+        <span class="section-label">Quan trọng</span>
+        <h2 class="section-title">⚠️ Lưu Ý Khi Tham Gia</h2>
+        <p class="section-desc">Vui lòng đọc kỹ các lưu ý dưới đây trước khi khởi hành</p>
+      </header>
+
+      <div class="notes-grid">
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Có mặt trước giờ khởi hành 15 phút.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Mang CCCD hoặc thẻ cư trú.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Chuẩn bị áo khoác mỏng vì sáng và tối khá lạnh.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Mang đồ cá nhân đầy đủ.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Không hút thuốc trong Villa.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Giữ gìn vệ sinh chung.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Tuân thủ giờ giấc của đoàn.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Không tách đoàn khi chưa báo trưởng đoàn.</span>
+        </div>
+        <div class="note-item fade-in">
+          <span class="note-icon">✅</span>
+          <span class="note-text">Tự bảo quản tài sản cá nhân.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Section 5: Footer
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer-content">
+      <h2 class="footer-title">Have a Nice Trip!</h2>
+      <p class="footer-subtitle">SBU2 <span class="footer-heart">❤️</span> Kaopiz</p>
+      <p class="footer-trip">Summer Trip 2026</p>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       Lightbox Modal
+       ============================================ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Xem ảnh phóng to" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Đóng">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Ảnh trước">&#10094;</button>
+    <img src="" alt="" id="lightboxImg">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Ảnh sau">&#10095;</button>
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+
+  <!-- ============================================
+       Back To Top Button
+       ============================================ -->
+  <button class="back-to-top" id="backToTop" aria-label="Về đầu trang">↑</button>
+
+  <!-- ============================================
+       JavaScript
+       ============================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ------------------------------------------
+         DOM References
+         ------------------------------------------ */
+      const navbar = document.getElementById('navbar');
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const timelineLine = document.getElementById('timelineLine');
+      const backToTop = document.getElementById('backToTop');
+      let galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+
+      let currentLightboxIndex = 0;
+      let galleryImages = [];
+
+      /* ------------------------------------------
+         1. Sticky Navbar — shadow on scroll
+         ------------------------------------------ */
+      function handleNavbarScroll() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+
+      /* ------------------------------------------
+         2. Mobile Menu Toggle
+         ------------------------------------------ */
+      function toggleMobileMenu() {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      }
+
+      function closeMobileMenu() {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      /* ------------------------------------------
+         3. Active Nav Link on Scroll
+         ------------------------------------------ */
+      function updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id], footer');
+        let current = '';
+
+        sections.forEach(function (section) {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id') || '';
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === '#' + current || (current === '' && href === '#home')) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      /* ------------------------------------------
+         4. Fade-in on Scroll (Intersection Observer)
+         ------------------------------------------ */
+      function initScrollAnimations() {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -60px 0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        fadeElements.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      /* ------------------------------------------
+         5. Timeline Line Animation
+         ------------------------------------------ */
+      function initTimelineAnimation() {
+        const timelineObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              timelineLine.classList.add('animated');
+              timelineObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        const scheduleSection = document.getElementById('schedule');
+        if (scheduleSection) {
+          timelineObserver.observe(scheduleSection);
+        }
+      }
+
+      /* ------------------------------------------
+         6. Back To Top Button
+         ------------------------------------------ */
+      function handleBackToTop() {
+        if (window.scrollY > 400) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      /* ------------------------------------------
+         7. Gallery Lightbox
+         ------------------------------------------ */
+      function initGallery() {
+        /* Thu thập tất cả ảnh gallery (Fika + りす2号) cho lightbox */
+        galleryItems = document.querySelectorAll('.gallery-item');
+        galleryImages = Array.from(galleryItems).map(function (item) {
+          const img = item.querySelector('img');
+          /* Dùng ảnh kích thước lớn hơn trong lightbox */
+          const src = img.src.replace('_bw600h450', '_bw1200h900');
+          return {
+            src: src,
+            caption: item.getAttribute('data-caption') || img.alt
+          };
+        });
+
+        galleryItems.forEach(function (item, index) {
+          item.addEventListener('click', function () {
+            openLightbox(index);
+          });
+        });
+      }
+
+      function openLightbox(index) {
+        currentLightboxIndex = index;
+        updateLightboxImage();
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      function updateLightboxImage() {
+        const img = galleryImages[currentLightboxIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.caption;
+        lightboxCaption.textContent = img.caption;
+      }
+
+      function nextImage() {
+        currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+        updateLightboxImage();
+      }
+
+      function prevImage() {
+        currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateLightboxImage();
+      }
+
+      /* ------------------------------------------
+         8. Smooth Scroll for Nav Links
+         ------------------------------------------ */
+      function initSmoothScroll() {
+        navLinks.forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+              const offset = navbar.offsetHeight;
+              const top = target.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: top, behavior: 'smooth' });
+              closeMobileMenu();
+            }
+          });
+        });
+      }
+
+      /* ------------------------------------------
+         Event Listeners
+         ------------------------------------------ */
+      window.addEventListener('scroll', function () {
+        handleNavbarScroll();
+        handleBackToTop();
+        updateActiveNavLink();
+      }, { passive: true });
+
+      navToggle.addEventListener('click', toggleMobileMenu);
+      backToTop.addEventListener('click', scrollToTop);
+
+      /* Lightbox controls */
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxNext.addEventListener('click', nextImage);
+      lightboxPrev.addEventListener('click', prevImage);
+
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      /* Keyboard navigation for lightbox */
+      document.addEventListener('keydown', function (e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+      });
+
+      /* ------------------------------------------
+         Initialize
+         ------------------------------------------ */
+      initScrollAnimations();
+      initTimelineAnimation();
+      initGallery();
+      initSmoothScroll();
+      handleNavbarScroll();
+      handleBackToTop();
+      updateActiveNavLink();
+
+    })();
+  </script>
+</body>
+</html>

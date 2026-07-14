@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SBU2 - Kaopiz Summer Trip 2026 | Yamanashi • Kawaguchiko • Yamanakako | 2 Days 1 Night">
-  <title>SBU2 - Kaopiz Summer Trip 2026</title>
+  <meta name="description" content="SBU2 TEAM BUILDING Japan 2026 | Yamanashi • Kawaguchiko • Yamanakako | 2 Days 1 Night">
+  <title>SBU2 TEAM BUILDING Japan 2026</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/Fmy2c4jH/Ban-xanh.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +40,7 @@
       --shadow-lg: 0 12px 40px rgba(37,99,235,.18);
       --radius: 16px;
       --radius-sm: 10px;
-      --nav-height: 72px;
+      --nav-height: 88px;
       --transition: .35s cubic-bezier(.4,0,.2,1);
     }
 
@@ -134,9 +135,12 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      height: var(--nav-height);
+      min-height: var(--nav-height);
+      height: auto;
       display: flex;
       align-items: center;
+      padding: .45rem 0;
+      overflow: visible;
       background: rgba(255,255,255,.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -157,14 +161,58 @@
     }
 
     .nav-brand {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: .02em;
       color: var(--blue);
       white-space: nowrap;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      flex-shrink: 0;
     }
 
-    .nav-brand span { color: var(--orange); }
+    .nav-brand img {
+      width: 72px;
+      height: 72px;
+      border-radius: 0;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: .1rem;
+      line-height: 1.15;
+    }
+
+    .nav-brand-title {
+      font-size: clamp(.95rem, 1.6vw, 1.15rem);
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: .03em;
+    }
+
+    .nav-brand-title span {
+      color: var(--orange);
+    }
+
+    .nav-brand-sub {
+      font-size: clamp(.7rem, 1.2vw, .82rem);
+      font-weight: 600;
+      color: var(--gray-500);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
     .nav-menu {
       display: flex;
@@ -252,6 +300,19 @@
       max-width: 800px;
     }
 
+    .hero-logo {
+      width: clamp(200px, 38vw, 320px);
+      height: clamp(200px, 38vw, 320px);
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      box-shadow:
+        0 12px 48px rgba(0,0,0,.45),
+        0 0 0 6px rgba(255,255,255,.28),
+        0 0 40px rgba(249,115,22,.25);
+      animation: fadeDown 1s ease .1s both;
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -268,13 +329,16 @@
     }
 
     .hero-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
       font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.2;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: .02em;
       margin-bottom: 1rem;
       text-shadow: 0 4px 20px rgba(0,0,0,.3);
       animation: fadeDown 1s ease .4s both;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
     }
 
     .hero-location {
@@ -361,7 +425,96 @@
       margin: 0 auto;
     }
 
-    /* Central vertical line */
+    /* Tabs lịch trình Day 1 / Day 2 */
+    .tl-tabs {
+      display: flex;
+      justify-content: center;
+      gap: .75rem;
+      margin: 0 auto 2.5rem;
+      max-width: 520px;
+      padding: .4rem;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tl-tab {
+      flex: 1;
+      border: none;
+      cursor: pointer;
+      padding: .85rem 1.25rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--gray-500);
+      background: transparent;
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .tl-tab:hover {
+      color: var(--blue);
+      background: rgba(37,99,235,.06);
+    }
+
+    .tl-tab.active {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: 0 6px 18px rgba(37,99,235,.3);
+    }
+
+    .tl-tab.day2.active {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 6px 18px rgba(22,163,74,.3);
+    }
+
+    .tl-tab small {
+      display: block;
+      font-size: .72rem;
+      font-weight: 500;
+      opacity: .85;
+      margin-top: .15rem;
+    }
+
+    .tl-panel {
+      display: none;
+      position: relative;
+      animation: tabFade .35s ease;
+    }
+
+    .tl-panel.active {
+      display: block;
+    }
+
+    @keyframes tabFade {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tl-panel .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--blue), var(--green), var(--orange));
+      border-radius: 4px;
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: top;
+      transition: transform 1.2s ease;
+    }
+
+    .tl-panel.active .timeline-line.animated {
+      transform: translateX(-50%) scaleY(1);
+    }
+
+    .tl-panel.day2 .timeline-line {
+      background: linear-gradient(180deg, var(--green), var(--blue), var(--orange));
+    }
+
+    /* Central vertical line (legacy — line now lives inside each panel) */
     .timeline-line {
       position: absolute;
       left: 50%;
@@ -1034,6 +1187,15 @@
       z-index: 1;
     }
 
+    .footer-logo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3), 0 0 0 3px rgba(255,255,255,.2);
+    }
+
     .footer-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -1206,7 +1368,20 @@
        Responsive — Mobile
        ============================================ */
     @media (max-width: 768px) {
-      :root { --nav-height: 64px; }
+      :root { --nav-height: 80px; }
+
+      .nav-brand img {
+        width: 58px;
+        height: 58px;
+      }
+
+      .nav-brand-title {
+        font-size: .9rem;
+      }
+
+      .nav-brand-sub {
+        font-size: .68rem;
+      }
 
       .nav-toggle { display: flex; }
 
@@ -1241,6 +1416,15 @@
 
       /* Timeline mobile — single column */
       .timeline-line { left: 20px; }
+      .tl-panel .timeline-line { left: 20px; }
+
+      .tl-tabs {
+        flex-direction: column;
+        border-radius: 20px;
+        max-width: 100%;
+      }
+
+      .tl-tab { text-align: center; }
 
       .timeline-item,
       .timeline-item.left,
@@ -1304,6 +1488,10 @@
 
     @media (max-width: 480px) {
       .hero-title { font-size: 1.8rem; }
+      .hero-logo {
+        width: clamp(160px, 55vw, 240px);
+        height: clamp(160px, 55vw, 240px);
+      }
       .hotel-specs { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item:first-child { grid-column: span 1; }
@@ -1344,6 +1532,19 @@
 
       .timeline-line { transform: translateX(-50%) scaleY(1) !important; }
 
+      .tl-tabs { display: none !important; }
+
+      .tl-panel,
+      .tl-panel[hidden] {
+        display: block !important;
+        animation: none !important;
+        page-break-before: always;
+      }
+
+      .tl-panel .timeline-line {
+        transform: translateX(-50%) scaleY(1) !important;
+      }
+
       .gallery-item::after { display: none; }
 
       a[href]::after { content: none; }
@@ -1357,7 +1558,13 @@
        ============================================ -->
   <nav class="navbar" id="navbar" aria-label="Điều hướng chính">
     <div class="container">
-      <a href="#home" class="nav-brand">🏕️ SBU2 <span>Summer Trip</span></a>
+      <a href="#home" class="nav-brand">
+        <img src="https://i.postimg.cc/Fmy2c4jH/Ban-xanh.png" alt="SBU2 TEAM BUILDING">
+        <span class="nav-brand-text">
+          <span class="nav-brand-title">SBU2 <span>TEAM BUILDING</span></span>
+          <span class="nav-brand-sub">IN JAPAN</span>
+        </span>
+      </a>
 
       <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1381,10 +1588,11 @@
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-      <div class="hero-badge">🏕️ Kaopiz Company Trip</div>
-      <h1 class="hero-title">SBU2 - Kaopiz Summer Trip 2026</h1>
+      <img class="hero-logo" src="https://i.postimg.cc/TRQKhSC4/Gemini-Generated-Image.png" alt="SBU2 TEAM BUILDING">
+      <div class="hero-badge">SBU2 TEAM BUILDING IN JAPAN</div>
+      <h1 class="hero-title">SUMMER TRIP 2026</h1>
       <p class="hero-location">Yamanashi • Kawaguchiko • Yamanakako</p>
-      <span class="hero-duration">2 Days 1 Night</span>
+      <span class="hero-duration">2 Days 1 Night · 01–02/08/2026</span>
     </div>
 
     <a href="#schedule" class="hero-scroll" aria-label="Cuộn xuống lịch trình">
@@ -1401,323 +1609,247 @@
       <header class="section-header fade-in">
         <span class="section-label">Hành trình</span>
         <h2 class="section-title">📅 Lịch Trình Chi Tiết</h2>
-        <p class="section-desc">2 ngày 1 đêm khám phá vùng đất Yamanashi — từ hồ Kawaguchiko đến vườn đào và Gotemba Outlets</p>
+        <p class="section-desc">2 ngày 1 đêm — Chiba ➔ Yamanakako ➔ Tokyo </p>
+        <span class="section-desc">01/08/2026–02/08/2026</span>
       </header>
 
+      <div class="tl-tabs fade-in" role="tablist" aria-label="Chọn ngày lịch trình">
+        <button type="button" class="tl-tab active" role="tab" aria-selected="true" data-day="1" id="tabDay1">
+          DAY 1
+          <small>01/08 · Chiba → Yamanakako</small>
+        </button>
+        <button type="button" class="tl-tab day2" role="tab" aria-selected="false" data-day="2" id="tabDay2">
+          DAY 2
+          <small>02/08 · Yamanakako → Tokyo</small>
+        </button>
+      </div>
+
       <div class="timeline-wrapper">
-        <div class="timeline-line" id="timelineLine"></div>
-
-        <!-- ===== DAY 1 ===== -->
-        <div class="day-divider fade-in">
-          <span>DAY 1</span>
-        </div>
-
-        <!-- CHẶNG 1: ĐÓN ĐOÀN & HỘI QUÂN -->
-        <div class="segment-divider fade-in">
-          <span>CHẶNG 1: ĐÓN ĐOÀN &amp; HỘI QUÂN</span>
-        </div>
-
-        <div class="timeline-item left type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 08:30</div>
-            <span class="timeline-type-badge">Di chuyển</span>
-            <h3 class="timeline-title">Đón đoàn tại Sân bay Narita</h3>
-            <p class="timeline-desc">Xe bus 28 chỗ có mặt tại bãi đỗ xe đoàn. Hướng dẫn viên và tài xế đón đoàn Việt Nam vừa hoàn tất thủ tục nhập cảnh. Mọi người sắp xếp hành lý ký gửi vào cốp xe.</p>
+        <!-- ===== DAY 1 PANEL ===== -->
+        <div class="tl-panel active" id="panelDay1" role="tabpanel" aria-labelledby="tabDay1">
+          <div class="timeline-line animated"></div>
+          <div class="segment-divider">
+            <span>CHIBA ➔ YAMANAKAKO</span>
           </div>
-        </div>
 
-        <div class="timeline-item right type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 09:00</div>
-            <span class="timeline-type-badge">Di chuyển</span>
-            <h3 class="timeline-title">Xuất phát từ Sân bay Narita</h3>
-            <p class="timeline-desc">Xe bus chạy dọc theo đường cao tốc hướng về tỉnh Chiba.</p>
+          <div class="timeline-item left type-transport fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 08:30</div>
+              <span class="timeline-type-badge">Di chuyển</span>
+              <h3 class="timeline-title">Đón đoàn tại Sân bay Narita</h3>
+              <p class="timeline-desc">Xe đón đoàn Việt Nam tại Sân bay Narita, khởi hành đi Chiba để đón member bên Nhật.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item left type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 09:45</div>
-            <span class="timeline-type-badge">Hội quân</span>
-            <h3 class="timeline-title">Ga Nishi-Funabashi (Cửa Nam)</h3>
-            <ul class="timeline-activities">
-              <li>Thành viên Tokyo &amp; Chiba (tập trung từ 9:30) lên xe</li>
-              <li>Xếp thùng xốp giữ nhiệt &amp; hành lý nhóm Nhật lên xe</li>
-            </ul>
+          <div class="timeline-item right type-transport fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 09:30</div>
+              <span class="timeline-type-badge">Khởi hành</span>
+              <h3 class="timeline-title">Xuất phát từ Ga Nishifunabashi</h3>
+              <p class="timeline-desc">Xe xuất phát từ ga Nishifunabashi đi Phú Sĩ.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 10:00</div>
-            <span class="timeline-type-badge">Khởi hành</span>
-            <h3 class="timeline-title">Toàn đoàn 22 người — Lên đường Phú Sĩ</h3>
-            <p class="timeline-desc">Xe bus chính thức chuyển bánh, tiến thẳng lên Cao tốc Chuo hướng núi Phú Sĩ.</p>
+          <div class="timeline-item left type-rest fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🍜</span> 12:30</div>
+              <span class="timeline-type-badge">Nghỉ chân</span>
+              <h3 class="timeline-title">Trạm Dangozaka SA</h3>
+              <p class="timeline-desc">Dừng chân nghỉ ngơi và ăn trưa tự túc tại Trạm dừng cao tốc Dangozaka SA.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- CHẶNG 2: DI CHUYỂN & ĂN TRƯA -->
-        <div class="segment-divider fade-in">
-          <span>CHẶNG 2: DI CHUYỂN &amp; ĂN TRƯA</span>
-        </div>
-
-        <div class="timeline-item left type-rest fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🍜</span> 11:30</div>
-            <span class="timeline-type-badge">Nghỉ chân</span>
-            <h3 class="timeline-title">Trạm Dangozaka Service Area</h3>
-            <ul class="timeline-activities">
-              <li>Nghỉ ngơi, đi vệ sinh sau hơn 1 tiếng rưỡi di chuyển</li>
-              <li>Tự do mua đồ ăn trưa: cơm nắm, bánh mì, Ramen tại Food court</li>
-              <li>Ăn tại chỗ hoặc mang lên xe — tiết kiệm thời gian</li>
-            </ul>
+          <div class="timeline-item right type-transport fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 13:15</div>
+              <span class="timeline-type-badge">Di chuyển</span>
+              <h3 class="timeline-title">Đi siêu thị Ogino Yamanakako </h3>
+              <p class="timeline-desc">Xe xuất phát đi siêu thị Ogino gần villa để mua đồ chuẩn bị cho BBQ.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 12:15</div>
-            <span class="timeline-type-badge">Di chuyển</span>
-            <h3 class="timeline-title">Tiếp tục hành trình</h3>
-            <p class="timeline-desc">Đoàn lên xe, xuôi về vùng hồ.</p>
+          <div class="timeline-item left type-shopping fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🛒</span> 14:00</div>
+              <span class="timeline-type-badge">Mua sắm</span>
+              <h3 class="timeline-title">Mua đồ chuẩn bị BBQ</h3>
+              <p class="timeline-desc">Cả đoàn mua sắm đồ BBQ tại MEGA Ogino.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- CHẶNG 3: VUI CHƠI & CHUẨN BỊ BBQ -->
-        <div class="segment-divider fade-in">
-          <span>CHẶNG 3: VUI CHƠI &amp; CHUẨN BỊ BBQ</span>
-        </div>
-
-        <div class="timeline-item left type-photo fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">📸</span> 13:00</div>
-            <span class="timeline-type-badge">Tham quan</span>
-            <h3 class="timeline-title">Công viên Oishi (大石公園)</h3>
-            <ul class="timeline-activities">
-              <li>Dạo chơi, chụp ảnh tập thể với view hồ Kawaguchiko &amp; núi Phú Sĩ</li>
-              <li>Thưởng thức kem tươi vị hoa oải hương hoặc dâu tây</li>
-            </ul>
+          <div class="timeline-item right type-transport fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 14:45</div>
+              <span class="timeline-type-badge">Di chuyển</span>
+              <h3 class="timeline-title">Về khu villa</h3>
+              <p class="timeline-desc">Di chuyển về khu villa để check-in và nhận phòng.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 14:00</div>
-            <span class="timeline-type-badge">Di chuyển</span>
-            <h3 class="timeline-title">Đến Siêu thị MEGA Ogino</h3>
-            <p class="timeline-desc">オギノ河口湖店 — siêu thị lớn nhất khu vực.</p>
+          <div class="timeline-item left type-villa fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🏕️</span> 15:15</div>
+              <span class="timeline-type-badge">Check-in</span>
+              <h3 class="timeline-title">Check-in nhận phòng</h3>
+              <p class="timeline-desc">Check-in nhận phòng, tắm rửa nghỉ ngơi.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item left type-shopping fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🛒</span> 14:15 – 15:15</div>
-            <span class="timeline-type-badge">Mua sắm</span>
-            <h3 class="timeline-title">Đại bần chiến dịch siêu thị BBQ</h3>
-            <ul class="timeline-activities">
-              <li>Thịt bò Nhật, hải sản, cánh gà, rau củ, nước sốt</li>
-              <li>Bia, nước ngọt, đá lạnh &amp; đồ ăn sáng ngày mai</li>
-              <li>Xếp vào thùng xốp giữ nhiệt &amp; cho lên xe bus</li>
-            </ul>
+          <div class="timeline-item right type-villa fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🔥</span> 16:30</div>
+              <span class="timeline-type-badge">BBQ</span>
+              <h3 class="timeline-title">Setup tiệc nướng ngoài trời</h3>
+              <p class="timeline-desc">Di chuyển ra khu BBQ để setup tiệc nướng ngoài trời.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 15:15</div>
-            <span class="timeline-type-badge">Di chuyển</span>
-            <h3 class="timeline-title">Về hướng hồ Yamanakako</h3>
-            <p class="timeline-desc">Xe bus xuất phát từ siêu thị để check-in villa.</p>
+          <div class="timeline-item left type-fireworks fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚶</span> 19:30</div>
+              <span class="timeline-type-badge">Pháo hoa</span>
+              <h3 class="timeline-title">Đi bộ ra hồ Yamanakako</h3>
+              <p class="timeline-desc">Đi bộ ra hồ Yamanakako để xem pháo hoa.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- CHẶNG 4: CHECK-IN VILLA & TIỆC TỐI -->
-        <div class="segment-divider chang-4 fade-in">
-          <span>CHẶNG 4: CHECK-IN VILLA &amp; TIỆC TỐI</span>
-        </div>
-
-        <div class="timeline-item left type-villa fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🏕️</span> 15:30</div>
-            <span class="timeline-type-badge">Check-in</span>
-            <h3 class="timeline-title">Văn phòng りす村別荘</h3>
-            <p class="timeline-desc">Địa chỉ: 山中湖村山中225-1. Trưởng đoàn làm thủ tục, nhận chìa khóa 2 căn hộ. Nhân viên hướng dẫn đỗ xe bus &amp; dẫn đường vào khu biệt thự.</p>
+          <div class="timeline-item right type-fireworks fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🎆</span> 20:00</div>
+              <span class="timeline-type-badge">Pháo hoa</span>
+              <h3 class="timeline-title">Ngắm pháo hoa tại hồ Yamanakako</h3>
+              <p class="timeline-desc">Ngắm pháo hoa ở hồ Yamanakako.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-villa fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🏡</span> 16:00</div>
-            <span class="timeline-type-badge">Nhận phòng</span>
-            <h3 class="timeline-title">Vào 2 căn biệt thự</h3>
-            <ul class="timeline-activities">
-              <li>Căn 14 người (りす2号) &amp; căn 9 người (Fika)</li>
-              <li>Phân chia giường, cất đồ ăn vào tủ lạnh</li>
-              <li>Tắm rửa &amp; nghỉ ngơi sau ngày di chuyển dài</li>
-            </ul>
+          <div class="timeline-item left type-villa fade-in visible">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🎉</span> 21:00</div>
+              <span class="timeline-type-badge">Giao lưu</span>
+              <h3 class="timeline-title">Về villa nghỉ ngơi &amp; giao lưu</h3>
+              <p class="timeline-desc">Về khách sạn để nghỉ ngơi, giao lưu tăng 2.</p>
+            </div>
           </div>
-        </div>
+        </div><!-- /#panelDay1 -->
 
-        <div class="timeline-item left type-villa fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🔥</span> 17:00</div>
-            <span class="timeline-type-badge">Chuẩn bị BBQ</span>
-            <h3 class="timeline-title">Setup tiệc nướng ngoài trời</h3>
-            <p class="timeline-desc">Chủ nhà hỗ trợ bàn ghế &amp; 2 bếp nướng tại bãi đất sát 2 căn hộ. Anh em nam giới hỗ trợ bày biện đồ ăn.</p>
+        <!-- ===== DAY 2 PANEL ===== -->
+        <div class="tl-panel day2" id="panelDay2" role="tabpanel" aria-labelledby="tabDay2" hidden>
+          <div class="timeline-line"></div>
+            <div class="segment-divider">
+              <span>YAMANAKAKO ➔ TOKYO</span>
+            </div>
+
+          <div class="timeline-item left type-food fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🌅</span> 07:30</div>
+              <span class="timeline-type-badge">Ăn sáng</span>
+              <h3 class="timeline-title">Buổi sáng tại Villa</h3>
+              <p class="timeline-desc">Dậy sớm tận hưởng không khí trong lành, ăn sáng nhẹ tại villa và thu dọn hành lý.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-food fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🍖</span> 18:00 – 21:00</div>
-            <span class="timeline-type-badge">Ăn uống</span>
-            <h3 class="timeline-title">Đại tiệc BBQ — 22 người</h3>
-            <p class="timeline-desc">Toàn đoàn quây quần ăn uống, nâng ly chúc mừng hội ngộ đầy đủ giữa không khí mát mẻ vùng núi Phú Sĩ.</p>
+          <div class="timeline-item right type-villa fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 08:45</div>
+              <span class="timeline-type-badge">Check-out</span>
+              <h3 class="timeline-title">Check-out &amp; đi Công viên Oishi</h3>
+              <p class="timeline-desc">Check-out trả phòng, toàn đoàn lên xe bus 28 chỗ xuất phát đi công viên Oishi cạnh hồ Kawaguchiko.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item left type-fireworks fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🎆</span> 20:00 – 21:00</div>
-            <span class="timeline-type-badge">Pháo hoa</span>
-            <h3 class="timeline-title">Lễ hội Koushasai — Ngắm pháo hoa</h3>
-            <ul class="timeline-activities">
-              <li>Pháo hoa khai mạc chính thức trên hồ Yamanakako</li>
-              <li>Vừa ăn BBQ vừa ngắm từ sân villa</li>
-              <li>Hoặc đi bộ vài phút ra ven hồ — góc nhìn hoành tráng nhất</li>
-            </ul>
+          <div class="timeline-item left type-photo fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">📸</span> 09:30</div>
+              <span class="timeline-type-badge">Tham quan</span>
+              <h3 class="timeline-title">Công viên Oishi (大石公園)</h3>
+              <p class="timeline-desc">Check-in, chụp ảnh và chơi tại công viên.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item right type-villa fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🧹</span> 21:00</div>
-            <span class="timeline-type-badge">Dọn dẹp</span>
-            <h3 class="timeline-title">Kết thúc tiệc nướng ngoài trời</h3>
-            <p class="timeline-desc">Theo quy định villa, đoàn dọn dẹp &amp; phân loại rác bốc vào túi để tránh ảnh hưởng hàng xóm.</p>
+          <div class="timeline-item right type-transport fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 10:30</div>
+              <span class="timeline-type-badge">Di chuyển</span>
+              <h3 class="timeline-title">Đi vườn đào Misaka</h3>
+              <p class="timeline-desc">Xe xuất phát đi vườn đào Misaka.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="timeline-item left type-villa fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🎉</span> 21:15 →</div>
-            <span class="timeline-type-badge">Giao lưu</span>
-            <h3 class="timeline-title">Tiệc trong nhà — りす2号</h3>
-            <ul class="timeline-activities">
-              <li>Toàn đoàn vào Phòng khách căn lớn (Risu số 2), đóng kín cửa kính</li>
-              <li>Giao lưu, trò chuyện, chơi trò chơi tăng 2 bên trong nhà</li>
-              <li>Đến giờ ngủ: nhóm căn 9 người đi bộ 2 phút về căn Fika</li>
-            </ul>
+          <div class="timeline-item left type-food fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🍜</span> 11:15</div>
+              <span class="timeline-type-badge">Ăn uống</span>
+              <h3 class="timeline-title">Ăn trưa mì Houtou</h3>
+              <p class="timeline-desc">Ăn trưa mì Houtou ở nhà hàng tại vườn.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- ===== DAY 2 ===== -->
-        <div class="day-divider day-2 fade-in">
-          <span>DAY 2</span>
-        </div>
-
-        <!-- 07:30 — Ăn sáng -->
-        <div class="timeline-item left type-food fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🍜</span> 07:30</div>
-            <span class="timeline-type-badge">Ăn uống</span>
-            <h3 class="timeline-title">Ăn sáng tại Villa</h3>
-            <p class="timeline-desc">Tự túc tại Villa.</p>
+          <div class="timeline-item right type-peach fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🍑</span> 12:00</div>
+              <span class="timeline-type-badge">Hái đào</span>
+              <h3 class="timeline-title">Hái đào &amp; buffet đào</h3>
+              <p class="timeline-desc">Hái đào và ăn buffet đào tráng miệng tại vườn.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 08:45 — Check-out -->
-        <div class="timeline-item right type-villa fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🏕️</span> 08:45</div>
-            <span class="timeline-type-badge">Check-out</span>
-            <h3 class="timeline-title">Check-out Villa</h3>
-            <p class="timeline-desc">Trả phòng và chuẩn bị hành trình ngày mới.</p>
+          <div class="timeline-item left type-transport fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 13:00</div>
+              <span class="timeline-type-badge">Di chuyển</span>
+              <h3 class="timeline-title">Đi Gotemba Premium Outlet</h3>
+              <p class="timeline-desc">Lên xe xuất phát về hướng Gotemba Premium Outlet.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 09:30 — Hái đào -->
-        <div class="timeline-item left type-peach fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🍑</span> 09:30</div>
-            <span class="timeline-type-badge">Hái đào</span>
-            <h3 class="timeline-title">Vườn đào Fuefuki / Misaka</h3>
-            <ul class="timeline-activities">
-              <li>Hái đào</li>
-              <li>Ăn đào tại vườn</li>
-              <li>Check-in</li>
-            </ul>
+          <div class="timeline-item right type-outlet fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🛍️</span> 14:30</div>
+              <span class="timeline-type-badge">Outlet</span>
+              <h3 class="timeline-title">Mua sắm tại Outlet</h3>
+              <p class="timeline-desc">Mua sắm ở khu Gotemba Premium Outlet.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 11:15 — Ăn trưa -->
-        <div class="timeline-item right type-food fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🍜</span> 11:15</div>
-            <span class="timeline-type-badge">Ăn uống</span>
-            <h3 class="timeline-title">Ăn trưa — Houtou Yamanashi</h3>
-            <p class="timeline-desc">Thưởng thức món ăn đặc sản vùng núi.</p>
+          <div class="timeline-item left type-transport fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🚌</span> 16:30</div>
+              <span class="timeline-type-badge">Di chuyển</span>
+              <h3 class="timeline-title">Về hướng Ikebukuro</h3>
+              <p class="timeline-desc">Lên xe di chuyển về hướng Ikebukuro.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- 13:15 — Outlet -->
-        <div class="timeline-item left type-outlet fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🛍️</span> 13:15</div>
-            <span class="timeline-type-badge">Outlet</span>
-            <h3 class="timeline-title">Gotemba Premium Outlets</h3>
-            <ul class="timeline-activities">
-              <li>Shopping</li>
-              <li>Cafe</li>
-              <li>Chụp hình</li>
-            </ul>
-            <p class="timeline-desc" style="margin-top:.5rem;">⏱️ Thời gian: 3 tiếng</p>
+          <div class="timeline-item right type-transport fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-time"><span class="timeline-icon">🏁</span> 19:30</div>
+              <span class="timeline-type-badge">Kết thúc</span>
+              <h3 class="timeline-title">Trả đoàn tại Ga Ikebukuro</h3>
+              <p class="timeline-desc">Trả đoàn tại cửa Tây ga Ikebukuro, kết thúc hành trình.</p>
+            </div>
           </div>
-        </div>
-
-        <!-- 16:30 — Về Tokyo -->
-        <div class="timeline-item right type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 16:30</div>
-            <span class="timeline-type-badge">Di chuyển</span>
-            <h3 class="timeline-title">Khởi hành về Tokyo</h3>
-            <p class="timeline-desc">Xe bus đưa đoàn trở về.</p>
-          </div>
-        </div>
-
-        <!-- 18:30 — Kết thúc -->
-        <div class="timeline-item left type-transport fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-time"><span class="timeline-icon">🚌</span> 18:30</div>
-            <span class="timeline-type-badge">Kết thúc</span>
-            <h3 class="timeline-title">Về đến Ga Nishi-Funabashi</h3>
-            <p class="timeline-desc">Kết thúc chuyến đi. Have a nice trip! 🎉</p>
-          </div>
-        </div>
+        </div><!-- /#panelDay2 -->
 
       </div><!-- /.timeline-wrapper -->
     </div>
@@ -1835,16 +1967,16 @@
 
             <div class="hotel-specs">
               <div class="spec-item">
-                <div class="spec-value">7</div>
+                <div class="spec-value">9</div>
                 <div class="spec-label">Sức chứa (người)</div>
               </div>
               <div class="spec-item">
-                <div class="spec-value">77.4</div>
+                <div class="spec-value">84.58</div>
                 <div class="spec-label">Diện tích (㎡)</div>
               </div>
               <div class="spec-item">
-                <div class="spec-value">Futon</div>
-                <div class="spec-label">Loại giường</div>
+                <div class="spec-value">2LDK</div>
+                <div class="spec-label">Loại phòng</div>
               </div>
             </div>
 
@@ -1910,7 +2042,7 @@
         <div class="room-card room-card-b fade-in">
           <div class="room-card-header">
             <span class="room-card-title">🏡 Cottage B — りす2号</span>
-            <span class="room-card-count">14 người</span>
+            <span class="room-card-count">13 người</span>
           </div>
           <div class="room-card-body">
             <div class="room-gender-label male">👨 Nam</div>
@@ -1929,7 +2061,7 @@
               </li>
               <li class="member-item">
                 <div class="member-avatar avatar-male">Đ</div>
-                <span class="member-name">Nguyễn Đình Đẳng</span>
+                <span class="member-name">Vũ Đình Đẳng</span>
               </li>
               <li class="member-item">
                 <div class="member-avatar avatar-male">D</div>
@@ -2082,9 +2214,10 @@
        ============================================ -->
   <footer class="footer">
     <div class="footer-content">
+      <img class="footer-logo" src="https://i.postimg.cc/TRQKhSC4/Gemini-Generated-Image.png" alt="SBU2 TEAM BUILDING">
       <h2 class="footer-title">Have a Nice Trip!</h2>
-      <p class="footer-subtitle">SBU2 <span class="footer-heart">❤️</span> Kaopiz</p>
-      <p class="footer-trip">Summer Trip 2026</p>
+      <p class="footer-subtitle">SBU2 <span class="footer-heart">❤️</span> TEAM BUILDING</p>
+      <p class="footer-trip">Japan · 01–02/08/2026</p>
     </div>
   </footer>
 
@@ -2119,7 +2252,6 @@
       const navMenu = document.getElementById('navMenu');
       const navLinks = document.querySelectorAll('.nav-link');
       const fadeElements = document.querySelectorAll('.fade-in');
-      const timelineLine = document.getElementById('timelineLine');
       const backToTop = document.getElementById('backToTop');
       let galleryItems = document.querySelectorAll('.gallery-item');
       const lightbox = document.getElementById('lightbox');
@@ -2204,21 +2336,70 @@
       }
 
       /* ------------------------------------------
-         5. Timeline Line Animation
+         5. Timeline Tabs (Day 1 / Day 2) + Line Animation
          ------------------------------------------ */
-      function initTimelineAnimation() {
-        const timelineObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              timelineLine.classList.add('animated');
-              timelineObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.2 });
+      function animatePanelLine(panel) {
+        if (!panel) return;
+        const line = panel.querySelector('.timeline-line');
+        if (!line) return;
+        line.classList.remove('animated');
+        /* Force reflow rồi animate lại */
+        void line.offsetWidth;
+        requestAnimationFrame(function () {
+          line.classList.add('animated');
+        });
+      }
 
+      function revealPanelItems(panel) {
+        if (!panel) return;
+        panel.querySelectorAll('.fade-in').forEach(function (el) {
+          el.classList.add('visible');
+        });
+      }
+
+      function switchScheduleDay(day) {
+        const tabs = document.querySelectorAll('.tl-tab');
+        const panels = document.querySelectorAll('.tl-panel');
+
+        tabs.forEach(function (tab) {
+          const isActive = tab.getAttribute('data-day') === String(day);
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        panels.forEach(function (panel) {
+          const isActive = panel.id === 'panelDay' + day;
+          panel.classList.toggle('active', isActive);
+          if (isActive) {
+            panel.removeAttribute('hidden');
+            revealPanelItems(panel);
+            animatePanelLine(panel);
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      }
+
+      function initScheduleTabs() {
+        document.querySelectorAll('.tl-tab').forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            switchScheduleDay(this.getAttribute('data-day'));
+          });
+        });
+
+        /* Animate line của Day 1 khi scroll tới section */
         const scheduleSection = document.getElementById('schedule');
-        if (scheduleSection) {
-          timelineObserver.observe(scheduleSection);
+        const day1Panel = document.getElementById('panelDay1');
+        if (scheduleSection && day1Panel) {
+          const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                animatePanelLine(day1Panel);
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15 });
+          observer.observe(scheduleSection);
         }
       }
 
@@ -2343,7 +2524,7 @@
          Initialize
          ------------------------------------------ */
       initScrollAnimations();
-      initTimelineAnimation();
+      initScheduleTabs();
       initGallery();
       initSmoothScroll();
       handleNavbarScroll();
